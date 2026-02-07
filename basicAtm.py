@@ -60,7 +60,7 @@ def main():
 def check_pass():
     attempts=0
     while attempts <4:
-        user_pin=int(input("Enter your PIN , you have 3 attempts : "))
+        user_pin=int(input("Enter your PIN , you have 4 attempts : "))
         if user_pin==pin:
             print("right PIN !")
             main()
@@ -73,3 +73,4 @@ def check_pass():
 #===================================================
 
 check_pass()
+
