@@ -1,9 +1,37 @@
 pin=1234
-def greet_user(name):
-    print(f"Hello, {name}!")
 #=================================
+def check_balance():
+       global user_current_balance
+       user_current_balance=4000
+       print(f"your current balance is {user_current_balance}")
+#=================================
+def withdraw_cash():
+       user_current_balance=4000
+       balance=int( input("enter the balance that you want to withdraw : "))     
+       if balance<user_current_balance:
+           user_current_balance-=balance
+           print(f"you have withdrawn {balance}")   
+           print(f"your current balance is {user_current_balance}")
+       else:
+           print("you have entered a balance greater than you have !")
+#==================================
+def deposit_cash():
+       user_current_balance=4000
+       balance=int( input("enter the balance that you want to deposit : "))  
+       user_current_balance+=balance
+       print(f"you have deposit {balance}")  
+       print(f"your current balance is {user_current_balance}")
+#===================================
+def  change_pin():
+        new_pin=int(input("enter the new pin : "))
+        pin=new_pin
+        print(f"the new PIN is {new_pin}")
+#=====================================
+def end_app():
+        print("you are finish the program !")
+        exit()
+#======================================        
 def main():
-    user_current_balance=4000
     print("="*50)
     print("""
 1- Check Balance
@@ -14,35 +42,22 @@ def main():
 """)
     choice=input("enter the choice that you want  : ")
     if choice == '1':
-        print(f"your current balance is {user_current_balance}")
+        check_balance()
     elif choice=='2':
-       balance=int( input("enter the balance that you want to withdraw : ")) 
-       if balance<user_current_balance:
-           user_current_balance-=balance
-           print(f"you have withdrawn {balance}")   
-           print(f"your current balance is {user_current_balance}")
-       else:
-           print("you have entered a balance greater than you have !")
-             
-           
-        
+       withdraw_cash()
     elif choice =='3':
-       balance=int( input("enter the balance that you want to deposit : "))  
-       user_current_balance+=balance
-       print(f"you have deposit {balance}")  
-       print(f"your current balance is {user_current_balance}")
+       deposit_cash()
     elif choice =='4'   :
-        new_pin=int(input("enter the new pin : "))
-        pin=new_pin
-        print(f"the new PIN is {new_pin}")
+        change_pin()
     elif choice=='5':
-        print("you are finish the program !")
-        exit()
+        end_app()
+    else:
+         print("Invalid choice. Please try again.")
+         main()    
 #===============================================
 #===============================================
 
 def check_pass():
-    
     attempts=0
     while attempts <4:
         user_pin=int(input("Enter your PIN , you have 3 attempts : "))
@@ -53,11 +68,8 @@ def check_pass():
         else:
             print("wrong PIN !")
             attempts+=1
-
-
+            
 #===================================================
 #===================================================
 
-name=input("Enter your name : ")
-greet_user(name)
 check_pass()
